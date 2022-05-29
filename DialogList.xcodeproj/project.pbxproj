@@ -21,6 +21,11 @@
 		9D6B66BA2843ACE4009E08E3 /* DialogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66B92843ACE4009E08E3 /* DialogTableViewCell.swift */; };
 		9D6B66BC2843AD74009E08E3 /* DialogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66BB2843AD74009E08E3 /* DialogModel.swift */; };
 		9D6B66BE2843B060009E08E3 /* DialogDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66BD2843B060009E08E3 /* DialogDataSource.swift */; };
+		9D6B66C02843B241009E08E3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66BF2843B241009E08E3 /* HomeViewModel.swift */; };
+		9D6B66C22843B272009E08E3 /* HomeContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66C12843B272009E08E3 /* HomeContract.swift */; };
+		9D6B66C42843BB18009E08E3 /* AddValuesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66C32843BB18009E08E3 /* AddValuesController.swift */; };
+		9D6B66C72843C8AF009E08E3 /* AddValuesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66C62843C8AF009E08E3 /* AddValuesViewModel.swift */; };
+		9D6B66C92843CE55009E08E3 /* AddValuesContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66C82843CE55009E08E3 /* AddValuesContract.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +64,11 @@
 		9D6B66B92843ACE4009E08E3 /* DialogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogTableViewCell.swift; sourceTree = "<group>"; };
 		9D6B66BB2843AD74009E08E3 /* DialogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogModel.swift; sourceTree = "<group>"; };
 		9D6B66BD2843B060009E08E3 /* DialogDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogDataSource.swift; sourceTree = "<group>"; };
+		9D6B66BF2843B241009E08E3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		9D6B66C12843B272009E08E3 /* HomeContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContract.swift; sourceTree = "<group>"; };
+		9D6B66C32843BB18009E08E3 /* AddValuesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddValuesController.swift; sourceTree = "<group>"; };
+		9D6B66C62843C8AF009E08E3 /* AddValuesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddValuesViewModel.swift; sourceTree = "<group>"; };
+		9D6B66C82843CE55009E08E3 /* AddValuesContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddValuesContract.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +124,7 @@
 				9D6B66B328437DB2009E08E3 /* Images.swift */,
 				9D6B66B528437EBC009E08E3 /* ViewSubclasses */,
 				9D6B66B828437FB7009E08E3 /* Home */,
+				9D6B66C52843C2E8009E08E3 /* AddItemModule */,
 				9D6B668728437587009E08E3 /* Main.storyboard */,
 				9D6B668A28437588009E08E3 /* Assets.xcassets */,
 				9D6B668C28437588009E08E3 /* LaunchScreen.storyboard */,
@@ -150,12 +161,24 @@
 		9D6B66B828437FB7009E08E3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				9D6B66C12843B272009E08E3 /* HomeContract.swift */,
 				9D6B66B128437598009E08E3 /* HomeController.swift */,
+				9D6B66BF2843B241009E08E3 /* HomeViewModel.swift */,
 				9D6B66B92843ACE4009E08E3 /* DialogTableViewCell.swift */,
 				9D6B66BB2843AD74009E08E3 /* DialogModel.swift */,
 				9D6B66BD2843B060009E08E3 /* DialogDataSource.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		9D6B66C52843C2E8009E08E3 /* AddItemModule */ = {
+			isa = PBXGroup;
+			children = (
+				9D6B66C82843CE55009E08E3 /* AddValuesContract.swift */,
+				9D6B66C32843BB18009E08E3 /* AddValuesController.swift */,
+				9D6B66C62843C8AF009E08E3 /* AddValuesViewModel.swift */,
+			);
+			path = AddItemModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,13 +313,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D6B66BC2843AD74009E08E3 /* DialogModel.swift in Sources */,
+				9D6B66C02843B241009E08E3 /* HomeViewModel.swift in Sources */,
+				9D6B66C22843B272009E08E3 /* HomeContract.swift in Sources */,
 				9D6B668228437587009E08E3 /* AppDelegate.swift in Sources */,
 				9D6B66B428437DB2009E08E3 /* Images.swift in Sources */,
 				9D6B66B728437EC9009E08E3 /* BaseView.swift in Sources */,
 				9D6B66BE2843B060009E08E3 /* DialogDataSource.swift in Sources */,
 				9D6B66BA2843ACE4009E08E3 /* DialogTableViewCell.swift in Sources */,
+				9D6B66C72843C8AF009E08E3 /* AddValuesViewModel.swift in Sources */,
+				9D6B66C92843CE55009E08E3 /* AddValuesContract.swift in Sources */,
 				9D6B668428437587009E08E3 /* SceneDelegate.swift in Sources */,
 				9D6B66B228437598009E08E3 /* HomeController.swift in Sources */,
+				9D6B66C42843BB18009E08E3 /* AddValuesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

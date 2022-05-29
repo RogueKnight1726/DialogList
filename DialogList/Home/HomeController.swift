@@ -19,9 +19,37 @@ class HomeController: UIViewController {
     lazy var tableViewDataSource: DialogDataSource = {
         DialogDataSource()
     }()
+    lazy var viewModel: HomeViewToModelProtocol = {
+        let viewModel = HomeViewModel()
+        viewModel.dataSource = tableViewDataSource
+        viewModel.view = self
+        return viewModel
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initViews()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.viewLoaded()
+    }
+    @objc func addNewItem(sender: UIButton) {
+        viewModel.addButtonTapped()
+    }
+}
+extension HomeController: HomeModelToViewProtocol {
+    func showViewToAddDialog() {
+        
+    }
+    func hideViewAddDialogView() {
+        
+    }
+    func refershList() {
+        dialogsTableView.reloadData()
+    }
+    func showNewController<T: UIViewController>(_ controller: T) {
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
 extension HomeController {
@@ -31,6 +59,7 @@ extension HomeController {
         let backgroundImageView = UIImageView()
         backgroundImageView.contentMode = .scaleAspectFill
         backgroundImageView.image = Images().backgoundImage
+        backgroundImageView.clipsToBounds = true
         view.addSubview(backgroundImageView)
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         [backgroundImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
@@ -45,6 +74,7 @@ extension HomeController {
          addButtonContainer.topAnchor.constraint(equalTo: guide.topAnchor, constant: 10)
         ].forEach({ $0.isActive = true })
         let addDialogButton = UIButton()
+        addDialogButton.addTarget(self, action: #selector(addNewItem(sender:)), for: .touchUpInside)
         addDialogButton.setTitle("Add +", for: .normal)
         addDialogButton.setTitleColor(.black, for: .normal)
         addButtonContainer.addSubview(addDialogButton)

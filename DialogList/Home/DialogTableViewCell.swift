@@ -44,30 +44,51 @@ class DialogTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    func setDateString(string: String) {
+        timeLabel.text = string
+    }
+    func setTitle(_ string: String) {
+        titleLabel.text = string
+    }
+    func setAuthorName(_ string: String) {
+        authorNameLabel.text = string
+    }
+    func setDescription(_ string: String) {
+        descriptionLabel.text = string
+    }
 }
 extension DialogTableViewCell {
     private func initViews() {
+        self.backgroundColor = .clear
+        let containerView = BaseView(with: .white, circular: false, shadow: true, borderColor: nil, borderThickness: nil)
+        self.addSubview(containerView)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        [containerView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10),
+         containerView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10),
+         containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+         containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
+        ].forEach({ $0.isActive = true })
         self.addSubview(authorNameLabel)
         authorNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        [authorNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10),
-         authorNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10)
+        [authorNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
+         authorNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20)
         ].forEach({ $0.isActive = true })
         self.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         [titleLabel.leftAnchor.constraint(equalTo: authorNameLabel.leftAnchor, constant: 0),
-         titleLabel.topAnchor.constraint(equalTo: authorNameLabel.bottomAnchor, constant: 10)
+         titleLabel.topAnchor.constraint(equalTo: authorNameLabel.bottomAnchor, constant: 20)
         ].forEach({ $0.isActive = true })
         self.addSubview(descriptionLabel)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         [descriptionLabel.leftAnchor.constraint(equalTo: authorNameLabel.leftAnchor, constant: 0),
-         descriptionLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10),
-         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10)
+         descriptionLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
+         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20)
         ].forEach({ $0.isActive = true })
         self.addSubview(timeLabel)
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
-        [timeLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10),
-         timeLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10),
-         timeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
+        [timeLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
+         timeLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
+         timeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20)
         ].forEach({ $0.isActive = true })
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DialogModel {
+struct DialogModel: Codable {
     var id: UUID
     var title: String
     var creationDate: Date
