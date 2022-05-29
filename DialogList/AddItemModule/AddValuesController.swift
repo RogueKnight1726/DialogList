@@ -46,7 +46,6 @@ class AddValuesController: UIViewController {
 }
 extension AddValuesController: AddValuesModelToViewProtocol {
     func showSuccess() {
-        print("Saved")
         self.navigationController?.popViewController(animated: true)
     }
     func showError(_ message: String) {

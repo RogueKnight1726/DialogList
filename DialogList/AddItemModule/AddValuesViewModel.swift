@@ -21,7 +21,7 @@ class AddValuesViewModel: AddValuesViewToModelProtocol {
         
     }
     private func saveObjectToUserDefaults(_ dialogueObject: DialogModel) {
-        if let savedContentData = UserDefaults.standard.object(forKey: "savedData") as? Data {
+        if let savedContentData = UserDefaults.standard.object(forKey: Identifiers().savedItemsCacheName) as? Data {
             do {
                 var savedContent = try? JSONDecoder().decode([DialogModel].self, from: savedContentData)
                 if savedContent?.contains(where: { $0.author == dialogueObject.author }) ?? false {
@@ -30,13 +30,13 @@ class AddValuesViewModel: AddValuesViewToModelProtocol {
                 }
                 savedContent?.append(dialogueObject)
                 let dataToBeSaved = try? JSONEncoder().encode(savedContent)
-                UserDefaults.standard.set(dataToBeSaved, forKey: "savedData")
+                UserDefaults.standard.set(dataToBeSaved, forKey: Identifiers().savedItemsCacheName)
                 view?.showSuccess()
             }
         } else {
             do {
                 let dataToBeSaved = try? JSONEncoder().encode([dialogueObject])
-                UserDefaults.standard.set(dataToBeSaved, forKey: "savedData")
+                UserDefaults.standard.set(dataToBeSaved, forKey: Identifiers().savedItemsCacheName)
                 view?.showSuccess()
             }
         }

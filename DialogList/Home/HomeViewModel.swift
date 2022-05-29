@@ -12,6 +12,8 @@ class HomeViewModel: HomeViewToModelProtocol {
     weak var dataSource: HomeModelToDataSourceProtocol?
     var sortOrder: SortOrder = .undefined
     var valuesInCache: [DialogModel] = []
+    var filteredArray: [DialogModel] = []
+    var searchTerm: String = ""
     func viewLoaded() {
         fetchSavedValues()
         view?.refershList()
@@ -20,25 +22,36 @@ class HomeViewModel: HomeViewToModelProtocol {
         let vc = AddValuesController()
         view?.showNewController(vc)
     }
-    func saveButtonTapped() {
-        
-    }
-    func cancelButtonTapped() {
-        
-    }
     func sortItems() {
         if sortOrder == .undefined || sortOrder == .decending {
             valuesInCache.sort(by: { $0.author < $1.author })
+            filteredArray.sort(by: { $0.author < $1.author })
             sortOrder = .ascending
         } else {
             valuesInCache.sort(by: { $0.author > $1.author })
+            filteredArray.sort(by: { $0.author > $1.author })
             sortOrder = .decending
         }
-        dataSource?.addValuesToDisplay(valuesInCache)
+        if searchTerm.isEmpty {
+            dataSource?.addValuesToDisplay(valuesInCache)
+        } else {
+            dataSource?.addValuesToDisplay(filteredArray)
+        }
+        view?.refershList()
+    }
+    func searchListFor(author: String) {
+        searchTerm = author
+        if author.isEmpty {
+            dataSource?.addValuesToDisplay(valuesInCache)
+            
+        } else {
+            filteredArray = valuesInCache.filter({ $0.author.contains(author) })
+            dataSource?.addValuesToDisplay(filteredArray)
+        }
         view?.refershList()
     }
     private func fetchSavedValues() {
-        guard let savedData = UserDefaults.standard.object(forKey: "savedData") as? Data else { return }
+        guard let savedData = UserDefaults.standard.object(forKey: Identifiers().savedItemsCacheName) as? Data else { return }
         do {
             guard let savedObjectArray = try? JSONDecoder().decode([DialogModel].self, from: savedData) else { return }
             valuesInCache = savedObjectArray

@@ -16,7 +16,7 @@
 		9D6B66A328437588009E08E3 /* DialogListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66A228437588009E08E3 /* DialogListUITests.swift */; };
 		9D6B66A528437588009E08E3 /* DialogListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66A428437588009E08E3 /* DialogListUITestsLaunchTests.swift */; };
 		9D6B66B228437598009E08E3 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66B128437598009E08E3 /* HomeController.swift */; };
-		9D6B66B428437DB2009E08E3 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66B328437DB2009E08E3 /* Images.swift */; };
+		9D6B66B428437DB2009E08E3 /* AppHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66B328437DB2009E08E3 /* AppHelpers.swift */; };
 		9D6B66B728437EC9009E08E3 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66B628437EC9009E08E3 /* BaseView.swift */; };
 		9D6B66BA2843ACE4009E08E3 /* DialogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66B92843ACE4009E08E3 /* DialogTableViewCell.swift */; };
 		9D6B66BC2843AD74009E08E3 /* DialogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B66BB2843AD74009E08E3 /* DialogModel.swift */; };
@@ -59,7 +59,7 @@
 		9D6B66A228437588009E08E3 /* DialogListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogListUITests.swift; sourceTree = "<group>"; };
 		9D6B66A428437588009E08E3 /* DialogListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogListUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9D6B66B128437598009E08E3 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
-		9D6B66B328437DB2009E08E3 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		9D6B66B328437DB2009E08E3 /* AppHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelpers.swift; sourceTree = "<group>"; };
 		9D6B66B628437EC9009E08E3 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		9D6B66B92843ACE4009E08E3 /* DialogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogTableViewCell.swift; sourceTree = "<group>"; };
 		9D6B66BB2843AD74009E08E3 /* DialogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogModel.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 			children = (
 				9D6B668128437587009E08E3 /* AppDelegate.swift */,
 				9D6B668328437587009E08E3 /* SceneDelegate.swift */,
-				9D6B66B328437DB2009E08E3 /* Images.swift */,
+				9D8597322844003B009E04E1 /* Helpers */,
 				9D6B66B528437EBC009E08E3 /* ViewSubclasses */,
 				9D6B66B828437FB7009E08E3 /* Home */,
 				9D6B66C52843C2E8009E08E3 /* AddItemModule */,
@@ -179,6 +179,14 @@
 				9D6B66C62843C8AF009E08E3 /* AddValuesViewModel.swift */,
 			);
 			path = AddItemModule;
+			sourceTree = "<group>";
+		};
+		9D8597322844003B009E04E1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9D6B66B328437DB2009E08E3 /* AppHelpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,7 +324,7 @@
 				9D6B66C02843B241009E08E3 /* HomeViewModel.swift in Sources */,
 				9D6B66C22843B272009E08E3 /* HomeContract.swift in Sources */,
 				9D6B668228437587009E08E3 /* AppDelegate.swift in Sources */,
-				9D6B66B428437DB2009E08E3 /* Images.swift in Sources */,
+				9D6B66B428437DB2009E08E3 /* AppHelpers.swift in Sources */,
 				9D6B66B728437EC9009E08E3 /* BaseView.swift in Sources */,
 				9D6B66BE2843B060009E08E3 /* DialogDataSource.swift in Sources */,
 				9D6B66BA2843ACE4009E08E3 /* DialogTableViewCell.swift in Sources */,

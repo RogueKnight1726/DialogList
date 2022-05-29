@@ -11,10 +11,17 @@ class HomeController: UIViewController {
     lazy var dialogsTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
-        tableView.register(DialogTableViewCell.self, forCellReuseIdentifier: "DialogCell")
+        tableView.register(DialogTableViewCell.self, forCellReuseIdentifier: Identifiers().dialogCellId)
         tableView.delegate = tableViewDataSource
         tableView.dataSource = tableViewDataSource
         return tableView
+    }()
+    lazy var searchTextField: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.addTarget(self, action: #selector(characterChanged(sender:)), for: .editingChanged)
+        textField.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
+        return textField
     }()
     lazy var tableViewDataSource: DialogDataSource = {
         DialogDataSource()
@@ -39,6 +46,9 @@ class HomeController: UIViewController {
     }
     @objc func sortItems(sender: UIButton) {
         viewModel.sortItems()
+    }
+    @objc func characterChanged(sender: UITextField) {
+        viewModel.searchListFor(author: sender.text ?? "")
     }
 }
 extension HomeController: HomeModelToViewProtocol {
@@ -74,7 +84,8 @@ extension HomeController {
         view.addSubview(addButtonContainer)
         addButtonContainer.translatesAutoresizingMaskIntoConstraints = false
         [addButtonContainer.rightAnchor.constraint(equalTo: guide.rightAnchor, constant: -10),
-         addButtonContainer.topAnchor.constraint(equalTo: guide.topAnchor, constant: 10)
+         addButtonContainer.topAnchor.constraint(equalTo: guide.topAnchor, constant: 10),
+         addButtonContainer.widthAnchor.constraint(equalToConstant: 130)
         ].forEach({ $0.isActive = true })
         let addDialogButton = UIButton()
         addDialogButton.addTarget(self, action: #selector(addNewItem(sender:)), for: .touchUpInside)
@@ -101,6 +112,20 @@ extension HomeController {
          sortButton.widthAnchor.constraint(equalToConstant: 30)
         ].forEach({ $0.isActive = true })
         sortButton.addTarget(self, action: #selector(sortItems(sender:)), for: .touchUpInside)
+        let searchContainer = BaseView(with: .white, circular: false, shadow: true, borderColor: nil, borderThickness: nil)
+        view.addSubview(searchContainer)
+        searchContainer.translatesAutoresizingMaskIntoConstraints = false
+        [searchContainer.leftAnchor.constraint(equalTo: guide.leftAnchor, constant: 10),
+         searchContainer.rightAnchor.constraint(equalTo: sortButton.leftAnchor, constant: -10),
+         searchContainer.centerYAnchor.constraint(equalTo: sortButton.centerYAnchor, constant: 0),
+         searchContainer.heightAnchor.constraint(equalTo: addButtonContainer.heightAnchor, constant: 0)
+        ].forEach({ $0.isActive = true })
+        searchContainer.addSubview(searchTextField)
+        searchTextField.translatesAutoresizingMaskIntoConstraints = false
+        [searchTextField.leftAnchor.constraint(equalTo: searchContainer.leftAnchor, constant: 10),
+         searchTextField.widthAnchor.constraint(equalTo: searchContainer.widthAnchor, constant: -20),
+         searchTextField.centerYAnchor.constraint(equalTo: searchContainer.centerYAnchor, constant: 0)
+        ].forEach({ $0.isActive = true })
         view.addSubview(dialogsTableView)
         dialogsTableView.translatesAutoresizingMaskIntoConstraints = false
         [dialogsTableView.leftAnchor.constraint(equalTo: guide.leftAnchor, constant: 0),

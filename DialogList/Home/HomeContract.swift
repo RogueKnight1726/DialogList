@@ -11,9 +11,8 @@ import UIKit
 protocol HomeViewToModelProtocol: AnyObject {
     func viewLoaded()
     func addButtonTapped()
-    func saveButtonTapped()
-    func cancelButtonTapped()
     func sortItems()
+    func searchListFor(author: String)
 }
 protocol HomeModelToViewProtocol: AnyObject {
     func showViewToAddDialog()

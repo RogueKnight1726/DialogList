@@ -14,3 +14,7 @@ struct Images {
 struct Color {
     var buttonColor = UIColor(red: 0.53, green: 0.68, blue: 0.77, alpha: 1.00)
 }
+struct Identifiers {
+    var dialogCellId = "dialogUITableViewCellIdenitifier"
+    var savedItemsCacheName = "savedItems"
+}

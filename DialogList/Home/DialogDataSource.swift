@@ -14,7 +14,7 @@ class DialogDataSource: NSObject,UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "DialogCell") as? DialogTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers().dialogCellId) as? DialogTableViewCell {
             let model = modelArray[indexPath.row]
             cell.setDateString(string: getStringFromDate(model.creationDate))
             cell.setDescription(model.content)
