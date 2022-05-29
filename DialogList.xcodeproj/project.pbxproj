@@ -123,7 +123,7 @@
 				9D6B668328437587009E08E3 /* SceneDelegate.swift */,
 				9D8597322844003B009E04E1 /* Helpers */,
 				9D6B66B528437EBC009E08E3 /* ViewSubclasses */,
-				9D6B66B828437FB7009E08E3 /* Home */,
+				9D6B66B828437FB7009E08E3 /* HomeModule */,
 				9D6B66C52843C2E8009E08E3 /* AddItemModule */,
 				9D6B668728437587009E08E3 /* Main.storyboard */,
 				9D6B668A28437588009E08E3 /* Assets.xcassets */,
@@ -158,7 +158,7 @@
 			path = ViewSubclasses;
 			sourceTree = "<group>";
 		};
-		9D6B66B828437FB7009E08E3 /* Home */ = {
+		9D6B66B828437FB7009E08E3 /* HomeModule */ = {
 			isa = PBXGroup;
 			children = (
 				9D6B66C12843B272009E08E3 /* HomeContract.swift */,
@@ -168,7 +168,7 @@
 				9D6B66BB2843AD74009E08E3 /* DialogModel.swift */,
 				9D6B66BD2843B060009E08E3 /* DialogDataSource.swift */,
 			);
-			path = Home;
+			path = HomeModule;
 			sourceTree = "<group>";
 		};
 		9D6B66C52843C2E8009E08E3 /* AddItemModule */ = {
