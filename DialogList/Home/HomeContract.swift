@@ -13,6 +13,7 @@ protocol HomeViewToModelProtocol: AnyObject {
     func addButtonTapped()
     func saveButtonTapped()
     func cancelButtonTapped()
+    func sortItems()
 }
 protocol HomeModelToViewProtocol: AnyObject {
     func showViewToAddDialog()

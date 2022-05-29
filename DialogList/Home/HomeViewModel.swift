@@ -10,6 +10,8 @@ import Foundation
 class HomeViewModel: HomeViewToModelProtocol {
     weak var view: HomeModelToViewProtocol?
     weak var dataSource: HomeModelToDataSourceProtocol?
+    var sortOrder: SortOrder = .undefined
+    var valuesInCache: [DialogModel] = []
     func viewLoaded() {
         fetchSavedValues()
         view?.refershList()
@@ -24,11 +26,23 @@ class HomeViewModel: HomeViewToModelProtocol {
     func cancelButtonTapped() {
         
     }
+    func sortItems() {
+        if sortOrder == .undefined || sortOrder == .decending {
+            valuesInCache.sort(by: { $0.author < $1.author })
+            sortOrder = .ascending
+        } else {
+            valuesInCache.sort(by: { $0.author > $1.author })
+            sortOrder = .decending
+        }
+        dataSource?.addValuesToDisplay(valuesInCache)
+        view?.refershList()
+    }
     private func fetchSavedValues() {
         guard let savedData = UserDefaults.standard.object(forKey: "savedData") as? Data else { return }
         do {
             guard let savedObjectArray = try? JSONDecoder().decode([DialogModel].self, from: savedData) else { return }
-            dataSource?.addValuesToDisplay(savedObjectArray)
+            valuesInCache = savedObjectArray
+            dataSource?.addValuesToDisplay(valuesInCache)
         }
         
     }

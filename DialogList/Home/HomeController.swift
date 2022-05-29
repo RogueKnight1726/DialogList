@@ -37,6 +37,9 @@ class HomeController: UIViewController {
     @objc func addNewItem(sender: UIButton) {
         viewModel.addButtonTapped()
     }
+    @objc func sortItems(sender: UIButton) {
+        viewModel.sortItems()
+    }
 }
 extension HomeController: HomeModelToViewProtocol {
     func showViewToAddDialog() {
@@ -84,6 +87,20 @@ extension HomeController {
          addDialogButton.leftAnchor.constraint(equalTo: addButtonContainer.leftAnchor, constant: 16),
          addDialogButton.rightAnchor.constraint(equalTo: addButtonContainer.rightAnchor, constant: -16)
         ].forEach({ $0.isActive = true })
+        let sortButton = UIButton()
+        sortButton.setImage(UIImage.init(systemName: "arrow.up.arrow.down.circle.fill"), for: .normal)
+        sortButton.tintColor = .white
+        sortButton.imageView?.contentMode = .scaleAspectFill
+        sortButton.contentVerticalAlignment = .fill
+        sortButton.contentHorizontalAlignment = .fill
+        view.addSubview(sortButton)
+        sortButton.translatesAutoresizingMaskIntoConstraints = false
+        [sortButton.rightAnchor.constraint(equalTo: addButtonContainer.leftAnchor, constant: -10),
+         sortButton.centerYAnchor.constraint(equalTo: addButtonContainer.centerYAnchor, constant: 0),
+         sortButton.heightAnchor.constraint(equalToConstant: 30),
+         sortButton.widthAnchor.constraint(equalToConstant: 30)
+        ].forEach({ $0.isActive = true })
+        sortButton.addTarget(self, action: #selector(sortItems(sender:)), for: .touchUpInside)
         view.addSubview(dialogsTableView)
         dialogsTableView.translatesAutoresizingMaskIntoConstraints = false
         [dialogsTableView.leftAnchor.constraint(equalTo: guide.leftAnchor, constant: 0),

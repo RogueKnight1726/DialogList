@@ -14,3 +14,9 @@ struct DialogModel: Codable {
     var author: String
     var content: String
 }
+
+enum SortOrder {
+    case ascending
+    case decending
+    case undefined
+}
